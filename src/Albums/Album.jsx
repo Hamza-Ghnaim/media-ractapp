@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-// import Photos  from "./Photos";
 import classes from "./Albums.module.css";
 
 
@@ -10,7 +9,6 @@ const Album = (props) => {
 
   const SeePhotos = (id) => {
     navigate(`./Photos/?albumID=${id}`);
-    // navigate(`./Photos`);
 
   };
 
