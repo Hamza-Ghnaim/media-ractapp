@@ -1,11 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+
 import classes from "./Albums.module.css";
 
 
 const Album = (props) => {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.userinfo);
+  // const user = JSON.parse(localStorage.userinfo);
 
   const SeePhotos = (id) => {
     navigate(`./Photos/?albumID=${id}`);

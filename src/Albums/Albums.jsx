@@ -1,9 +1,12 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect,useContext } from "react";
 import classes from "./Albums.module.css";
 import Album from "./Album";
+import Context from "../ContextFolder/Context";
 const Albums = () => {
-
-  const user = JSON.parse(localStorage.userinfo);
+const {userInfo}=useContext(Context);
+const user = {userInfo};
+// console.log(typeof user.id)localStorage
+  // const user = JSON.parse(.userinfo);
   const [AlbumsArray, setAlbumsArray] = useState([]);
 
 

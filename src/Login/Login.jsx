@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
+import Context from "../ContextFolder/Context";
 import { useNavigate } from "react-router-dom";
 import classes from "./Login.module.css";
 
 const Login = () => {
   const navigate = useNavigate();
+  const {setUserInfo} = useContext(Context)
   const loginHandler = async (event) => {
     try {
       event.preventDefault();
@@ -13,7 +15,10 @@ const Login = () => {
       );
       const user =  (await response.json()).find((item) => item.email.toLowerCase() === userEmail.toLowerCase());
       if (user !== undefined) {
-        localStorage.userinfo = JSON.stringify(user);
+        // localStorage.userinfo = JSON.stringify(user);
+        // setUserInfo(JSON.stringify(user));
+        setUserInfo(user);
+
         navigate("/Albums");
       } else {
         throw new Error("Please enter a valid Email");
