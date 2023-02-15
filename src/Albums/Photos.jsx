@@ -1,10 +1,10 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect  } from "react";
 import { useSearchParams } from "react-router-dom";
 import classes from "./Albums.module.css"
-// import classes from "./Comments.module.css";
 
 const Photos = () => {
-  const user = JSON.parse(localStorage.userinfo);
+
+
   const [photos, setphotos] = useState([]);
   const [searchParams] = useSearchParams();
   const albumID = searchParams.get("albumID");
@@ -19,7 +19,6 @@ const Photos = () => {
     };
     Fetch();
   });
-//   const post = Album.title;
 return (
     <Fragment>
         {photos &&

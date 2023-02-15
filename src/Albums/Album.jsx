@@ -7,12 +7,8 @@ import classes from "./Albums.module.css";
 const Album = ({data}) => {
   const {userInfo} = useContext(Context)
   const navigate = useNavigate();
-  console.log(data);
-  // const user = JSON.parse(localStorage.userinfo);
-
   const SeePhotos = (id) => {
     navigate(`./Photos/?albumID=${id}`);
-
   };
 
   return (

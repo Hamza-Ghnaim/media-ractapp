@@ -9,16 +9,17 @@ import './App.css'
 
 
 function App() {
-
-  const [userInfo, setUserInfo] = useState([]);
-  useEffect(()=>{
-    try{
-      setUserInfo(JSON.parse(localStorage.userinfo))
-    }
-    catch(err){
-      console.log(err);
-    }
-  }, [])    
+  const [userInfo, setUserInfo] = useState(JSON.parse(localStorage.userinfo));
+  // const [userInfo, setUserInfo] = useState("");
+  // useEffect(()=>{
+  //   try{
+  //     setUserInfo(JSON.parse(localStorage.userinfo))
+  //   }
+  //   catch(err){
+  //     // console.log(err);
+  //   }
+  // }, [userInfo])    
+  // console.log(userInfo);
 
   return (
     <Context.Provider value={{userInfo , setUserInfo} }>

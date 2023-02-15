@@ -16,9 +16,7 @@ const Login = () => {
       const user =  (await response.json()).find((item) => item.email.toLowerCase() === userEmail.toLowerCase());
       if (user !== undefined) {
         localStorage.userinfo = JSON.stringify(user);
-        // setUserInfo(JSON.stringify(user));
         setUserInfo(user);
-
         navigate("/Albums");
       } else {
         throw new Error("Please enter a valid Email");
