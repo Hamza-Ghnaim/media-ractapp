@@ -1,28 +1,29 @@
 import React, { Fragment, useState, useEffect,useContext } from "react";
+import { useLocation } from "react-router";
 import classes from "./Albums.module.css";
 import Album from "./Album";
 import Context from "../ContextFolder/Context";
 const Albums = () => {
+  const loc = useLocation()
 const {userInfo}=useContext(Context);
-const user = {userInfo};
-// console.log(typeof user.id)localStorage
-  // const user = JSON.parse(.userinfo);
+console.log(userInfo);  
   const [AlbumsArray, setAlbumsArray] = useState([]);
 
 
   useEffect(() => {
     const Fetch = async () => {
-      const response = await fetch(
-        `https://jsonplaceholder.typicode.com/users/${user.id}/albums`
-      );
-      const Response = await response.json();
-      setAlbumsArray(Response);
+      if(userInfo){
+        const response = await fetch(
+          `https://jsonplaceholder.typicode.com/users/${userInfo.id}/albums`
+        );
+        const Response = await response.json();
+        console.log(Response);
+        setAlbumsArray(Response);
+      } 
     };
+    // setUserInfo(JSON.parse(localStorage.userinfo));
     Fetch();
-  }, []);
-
-
-
+  }, [userInfo]);
 
 
   return (

@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
+import Context from "../ContextFolder/Context";
 import { useNavigate } from "react-router-dom";
-
 import classes from "./Albums.module.css";
 
 
-const Album = (props) => {
+const Album = ({data}) => {
+  const {userInfo} = useContext(Context)
   const navigate = useNavigate();
+  console.log(data);
   // const user = JSON.parse(localStorage.userinfo);
 
   const SeePhotos = (id) => {
@@ -14,21 +16,26 @@ const Album = (props) => {
   };
 
   return (
+    <>
+    {userInfo && (
       <div className={classes.posts_div}>
         <div className={classes.userINFO}>
           <div className={classes.userNAMES}>
-            <h3 className={classes.name}>{user.name}</h3>
-            <h5 className={classes.username}>@{user.username}</h5>
+            <h3 className={classes.name}>{userInfo.name}</h3>
+            <h5 className={classes.username}>@{userInfo.username}</h5>
           </div>
         </div>
         <p
           className={classes.post}
-          onClick={() => SeePhotos(props.data.id)}
+          onClick={() => SeePhotos(data.id)}
         >
-          {props.data.title}
+          {data.title}
         </p>
         <hr id="hr1" className={classes.hr1} />
       </div>
+    )}
+    </>
+
   );
 };
 

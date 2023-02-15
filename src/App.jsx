@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import {BrowserRouter,Route,Routes} from "react-router-dom";
 import Login from './Login/Login';
 import Albums from './Albums/Albums';
@@ -11,6 +11,14 @@ import './App.css'
 function App() {
 
   const [userInfo, setUserInfo] = useState([]);
+  useEffect(()=>{
+    try{
+      setUserInfo(JSON.parse(localStorage.userinfo))
+    }
+    catch(err){
+      console.log(err);
+    }
+  }, [])    
 
   return (
     <Context.Provider value={{userInfo , setUserInfo} }>
