@@ -11,7 +11,7 @@ import './App.css'
 
 function App() {
   const [userInfo, setUserInfo] = useState(JSON.parse(localStorage.userinfo));
-
+  const [loginstats, setloginstats] = useState({isLogged:false});
   // const [userInfo, setUserInfo] = useState("");
   // useEffect(()=>{
   //   try{
@@ -24,7 +24,7 @@ function App() {
   // console.log(userInfo);
 
   return (
-    <Context.Provider value={{userInfo , setUserInfo} }>
+    <Context.Provider value={{userInfo , setUserInfo,loginstats, setloginstats} }>
       <BrowserRouter>
         <Routes>
           <Route path ="/" element={<Login/>} />

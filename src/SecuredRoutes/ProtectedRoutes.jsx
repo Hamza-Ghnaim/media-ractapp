@@ -1,5 +1,6 @@
-import React,{useState} from "react";
+import React,{useState,useContext} from "react";
 import { Navigate,Outlet } from "react-router";
+import Context from "../ContextFolder/Context";
 const ProtectedRoutes = ()=>{
     let isAuth =true;
     return(
