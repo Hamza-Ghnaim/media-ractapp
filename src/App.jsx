@@ -1,18 +1,25 @@
 import React, {useState} from 'react'
-import {BrowserRouter,Route,Routes} from "react-router-dom";
+import {BrowserRouter,Route,Routes, useLocation} from "react-router-dom";
 import Login from './Login/Login';
 import Albums from './Albums/Albums';
-import Context from './ContextFolder/Context';
+import { AuthContext, AuthProvider } from './ContextFolder/Context';
 import Photos from './Albums/Photos';
 import ProtectedRoutes from './SecuredRoutes/ProtectedRoutes';
-import './App.css'
-
-
+import './App.css';
 
 function App() {
-  const [userInfo, setUserInfo] = useState(JSON.parse(localStorage.userinfo));
-  const [loginstats, setloginstats] = useState({isLogged:false});
-  // const [userInfo, setUserInfo] = useState("");
+
+
+
+
+  // const [userInfo, setUserInfo] = useState(JSON.parse(localStorage.userinfo));
+  // const [loginstats, setloginstats] = useState({isLogged:false});
+  // const [userInfo, setUserInfo] = useState(
+  //   (localStorage.getItem("userinfo") === null) ? "" :(JSON.parse(localStorage.userinfo)) );
+  // const [logInfo, setlogInfo] = useState(
+  //   (localStorage.getItem("userinfo") === null) ? true :false) ;
+  //   const [userAuth, setuserAuth] = useState(
+  // userAuth) ;
   // useEffect(()=>{
   //   try{
   //     setUserInfo(JSON.parse(localStorage.userinfo))
@@ -20,11 +27,14 @@ function App() {
   //   catch(err){
   //     // console.log(err);
   //   }
-  // }, [userInfo])    
-  // console.log(userInfo);
+  // })    
+  // // console.log(userInfo);
+
+
+
 
   return (
-    <Context.Provider value={{userInfo , setUserInfo,loginstats, setloginstats} }>
+    <AuthProvider>
       <BrowserRouter>
         <Routes>
           <Route path ="/" element={<Login/>} />
@@ -34,7 +44,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </Context.Provider>
+    </AuthProvider>
   )
 }
 

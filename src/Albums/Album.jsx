@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import Context from "../ContextFolder/Context";
+import { AuthContext, AuthProvider } from "../ContextFolder/Context";
 import { useNavigate } from "react-router-dom";
 import classes from "./Albums.module.css";
 
