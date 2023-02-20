@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect, useContext } from "react";
 import classes from "./Albums.module.css";
 import Album from "./Album";
 import AuthContext from "../ContextFolder/Context";
+import axios from "axios";
 const Albums = () => {
   const { userInfo } = useContext(AuthContext);
 
@@ -9,12 +10,13 @@ const Albums = () => {
 
   useEffect(() => {
     const Fetch = async () => {
-      const response = await fetch(
+      
+      const Response = await axios.get(
         `https://jsonplaceholder.typicode.com/users/${userInfo?.id}/albums`
       );
-      const Response = await response.json();
+      // const Response = await response.json();
       
-      setAlbumsArray(Response);
+      setAlbumsArray(Response.data);
     };
 
     Fetch();

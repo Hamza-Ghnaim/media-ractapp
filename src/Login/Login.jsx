@@ -2,6 +2,7 @@ import React, { useContext,useEffect, useState } from "react";
 import AuthContext from "../ContextFolder/Context";
 import { useNavigate } from "react-router-dom";
 import classes from "./Login.module.css";
+import axios from "axios";
 
 
 
@@ -18,11 +19,12 @@ const Login = () => {
 
   useEffect(() => {
     const Fetch = async () => {
-          let Users =await fetch(
-      "https://jsonplaceholder.typicode.com/users"
-    );
-    Users = await (Users.json());
-    setUsers(Users);
+     const Users = await axios.get("https://jsonplaceholder.typicode.com/users");
+    //       let Users =await fetch(
+    //   "https://jsonplaceholder.typicode.com/users"
+    // );
+    // Users = await (Users.json());
+    setUsers(Users.data);
 
     };
 

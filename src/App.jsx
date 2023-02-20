@@ -8,20 +8,9 @@ import ProtectedRoutes from "./SecuredRoutes/ProtectedRoutes";
 import "./App.css";
 
 function App() {
-  // console.log("from app");
-  // const [userInfo, setUserInfo] = useState(
-  //   localStorage.getItem("userinfo") === null
-  //     ? ""
-  //     : JSON.parse(localStorage.userinfo)
-  // );
+
 
   const  [userInfo, setUserInfo]=useState(JSON.parse(localStorage.getItem("userinfo")));
-
-  // const [userInfo, setUserInfo] = useState(
-  //   localStorage.getItem("userinfo") === null
-  //     ? ""
-  //     : JSON.parse(localStorage.userinfo)
-  // );
 
   const[isLogged , setisLogged]=useState(
     userInfo

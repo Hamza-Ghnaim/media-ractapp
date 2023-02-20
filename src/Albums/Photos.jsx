@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect  } from "react";
 import { useSearchParams } from "react-router-dom";
-import classes from "./Albums.module.css"
+import classes from "./Albums.module.css";
+import axios from "axios";
 
 const Photos = () => {
 
@@ -11,11 +12,11 @@ const Photos = () => {
   useEffect(() => {
     const Fetch = async () => {
 
-      const response2 = await fetch(
+      const Response2 = await axios.get(
         `https://jsonplaceholder.typicode.com/albums/${albumID}/photos`
       );
-      const Response2 = await response2.json();
-      setphotos(Response2);
+      // const Response2 = await response2.json();
+      setphotos(Response2.data);
     };
     Fetch();
     // localStorage.removeItem('userinfo');
