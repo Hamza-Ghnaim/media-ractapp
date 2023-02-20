@@ -1,24 +1,45 @@
-import React, { useContext } from "react";
+import React, { useContext,useEffect, useState } from "react";
 import AuthContext from "../ContextFolder/Context";
 import { useNavigate } from "react-router-dom";
 import classes from "./Login.module.css";
 
+
+
 const Login = () => {
+
+  const { setUserInfo }=useContext(AuthContext);
   const {setisLogged}=useContext(AuthContext);
+  const [users,setUsers]=useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
+
+  useEffect(() => {
+    const Fetch = async () => {
+          let Users =await fetch(
+      "https://jsonplaceholder.typicode.com/users"
+    );
+    Users = await (Users.json());
+    setUsers(Users);
+
+    };
+
+    Fetch();
+  }, []);
+
   const loginHandler = async (event) => {
     try {
       event.preventDefault();
       setisLogged(true);
+      // const userEmail = event?.target?.elements?.email?.value;
       const userEmail = document.getElementById("email").value;
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/users"
-      );
-      const user = (await response.json()).find(
-        (item) => item.email.toLowerCase() === userEmail.toLowerCase()
-      );
+      
+      const user = (users).find((item) => item.email.toLowerCase() === userEmail.toLowerCase());
       if (user !== undefined) {
         localStorage.userinfo = JSON.stringify(user);
+        setUserInfo(user);
         navigate("/Albums");
       } else {
         throw new Error("Please enter a valid Email");
