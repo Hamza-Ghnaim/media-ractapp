@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { AuthContext, AuthProvider } from "../ContextFolder/Context";
+import AuthContext from "../ContextFolder/Context";
 import { useNavigate } from "react-router-dom";
 import classes from "./Albums.module.css";
 
 const Album = ({ data }) => {
-  // const {userInfo} = useContext(Context)
+  const { userInfo } = useContext(AuthContext);
   const navigate = useNavigate();
   const SeePhotos = (id) => {
     navigate(`./Photos/?albumID=${id}`);

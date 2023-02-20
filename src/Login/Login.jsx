@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../ContextFolder/Context";
+import AuthContext from "../ContextFolder/Context";
 import { useNavigate } from "react-router-dom";
 import classes from "./Login.module.css";
 
 const Login = () => {
   const navigate = useNavigate();
+  // const { userInfo } = useContext(Context);
   const loginHandler = async (event) => {
     try {
       event.preventDefault();

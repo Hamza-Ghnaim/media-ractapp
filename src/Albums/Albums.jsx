@@ -1,10 +1,10 @@
 import React, { Fragment, useState, useEffect, useContext } from "react";
 import classes from "./Albums.module.css";
 import Album from "./Album";
-import { AuthContext, AuthProvider } from "../ContextFolder/Context";
+import AuthContext from "../ContextFolder/Context";
 const Albums = () => {
-  // const { fill } = useContext(AuthContext);
-  // fill();
+  const { userInfo } = useContext(AuthContext);
+
   const [AlbumsArray, setAlbumsArray] = useState([]);
 
   useEffect(() => {
