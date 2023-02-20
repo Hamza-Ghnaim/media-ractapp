@@ -4,11 +4,12 @@ import { useNavigate } from "react-router-dom";
 import classes from "./Login.module.css";
 
 const Login = () => {
+  const {setisLogged}=useContext(AuthContext);
   const navigate = useNavigate();
-  // const { userInfo } = useContext(Context);
   const loginHandler = async (event) => {
     try {
       event.preventDefault();
+      setisLogged(true);
       const userEmail = document.getElementById("email").value;
       const response = await fetch(
         "https://jsonplaceholder.typicode.com/users"

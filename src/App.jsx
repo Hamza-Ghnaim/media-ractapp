@@ -8,29 +8,29 @@ import ProtectedRoutes from "./SecuredRoutes/ProtectedRoutes";
 import "./App.css";
 
 function App() {
-  // const [userInfo, setUserInfo] = useState(JSON.parse(localStorage.userinfo));
-  // const [loginstats, setloginstats] = useState({isLogged:false});
+
   const [userInfo, setUserInfo] = useState(
     localStorage.getItem("userinfo") === null
       ? ""
       : JSON.parse(localStorage.userinfo)
   );
-  // const [logInfo, setlogInfo] = useState(
-  //   (localStorage.getItem("userinfo") === null) ? true :false) ;
-  //   const [userAuth, setuserAuth] = useState(
-  // userAuth) ;
-  // useEffect(()=>{
-  //   try{
-  //     setUserInfo(JSON.parse(localStorage.userinfo))
-  //   }
-  //   catch(err){
-  //     // console.log(err);
-  //   }
-  // })
-  // // console.log(userInfo);
+
+  // const [userInfo, setUserInfo] = useState(
+  //   localStorage.getItem("userinfo") === null
+  //     ? ""
+  //     : JSON.parse(localStorage.userinfo)
+  // );
+
+  const[isLogged , setisLogged]=useState(
+    userInfo
+    ? true
+    : false
+  )
+
+
 
   return (
-    <AuthContext.Provider value={{ userInfo, setUserInfo }}>
+    <AuthContext.Provider value={{ userInfo, setUserInfo,isLogged , setisLogged }}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
