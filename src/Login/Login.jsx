@@ -12,9 +12,9 @@ const Login = () => {
   const [users,setUsers]=useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    localStorage.clear();
-  }, []);
+  // useEffect(() => {
+  //   localStorage.clear();
+  // }, []);
 
   useEffect(() => {
     const Fetch = async () => {
@@ -27,6 +27,7 @@ const Login = () => {
     };
 
     Fetch();
+    localStorage.clear();
   }, []);
 
   const loginHandler = async (event) => {
