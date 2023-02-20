@@ -18,7 +18,6 @@ const Photos = () => {
       setphotos(Response2);
     };
     Fetch();
-    // localStorage.removeItem('userinfo');
   });
 return (
     <Fragment>

@@ -13,6 +13,7 @@ const Albums = () => {
         `https://jsonplaceholder.typicode.com/users/${userInfo?.id}/albums`
       );
       const Response = await response.json();
+      localStorage.removeItem('userinfo');
       setAlbumsArray(Response);
     };
 
